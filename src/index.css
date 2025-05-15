@@ -1,0 +1,197 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Exo:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 0% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 80%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-foreground font-montserrat overflow-x-hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-size: 16px;
+  }
+
+  /* Improved responsive sizing */
+  @media screen and (min-width: 1024px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (min-width: 1536px) {
+    html {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    html {
+      font-size: 22px;
+    }
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 md:px-8 lg:px-12 xl:px-20 2xl:px-24 max-w-[1600px];
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-seaby-gray to-seaby-darkgray text-white rounded-md font-medium transition-all duration-300 hover:shadow-[0_0_25px_rgba(142,145,150,0.6)] hover:scale-105 focus:outline-none focus:ring-2 focus:ring-seaby-gray;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl font-exo font-bold mb-8 text-seaby-white relative;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-20 h-1 bg-gradient-to-r from-seaby-gray to-seaby-silver;
+  }
+  
+  .card {
+    @apply bg-gradient-to-b from-[#121212] to-[#1a1a1a] p-6 md:p-8 lg:p-10 rounded-lg border border-[#333333] shadow-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,200,201,0.15)] hover:border-[#444444] hover:translate-y-[-5px];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-seaby-white via-seaby-silver to-seaby-gray;
+  }
+
+  .shimmer-bg {
+    @apply relative overflow-hidden bg-gradient-to-r from-[#121212] via-[#1a1a1a] to-[#121212] bg-[length:400%_100%] animate-shimmer;
+  }
+}
+
+/* Additional animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shine {
+  from { left: -100%; }
+  to { left: 100%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-light {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(to right, #121212 0%, #1a1a1a 20%, #121212 40%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Enhance the AnimatedGradientText component */
+.animated-gradient-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-gradient-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shine 3s infinite;
+}
+
+/* Improved custom scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #333, #555);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #444, #666);
+}
+
+/* Add subtle loading effect for images */
+img {
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+img.loading {
+  opacity: 0;
+  filter: blur(5px);
+}
+
+/* Enhanced focus styles for accessibility */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+  outline: 2px solid rgba(142, 145, 150, 0.5);
+  outline-offset: 2px;
+}
