@@ -1,7 +1,3 @@
-Certainly! Here's an expert-level `README.md` file tailored for your OFPPT PIE project website, emphasizing professionalism and clarity. This template incorporates best practices to effectively communicate your project's purpose, setup, and contribution guidelines.
-
----
-
 # 🚀 OFPPT PIE Project Website
 
 Welcome to the official website for the **Programme d'Innovation Entrepreneuriale (PIE)** by OFPPT. This platform serves as a digital hub for aspiring entrepreneurs to access resources, track progress, and engage with the PIE community.
